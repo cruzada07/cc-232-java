@@ -5,7 +5,7 @@
  */
 import java.util.Arrays;
 
-public class Semana01_ArraysDinamicos0 {
+public class ArraysDinamicos0 {
     static class ArrayStack {
         private Integer[] a = new Integer[1];
         private int n = 0;
