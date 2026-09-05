@@ -36,8 +36,8 @@ public class ArraysDinamicos1 {
 
         void add(int i, Integer x) {
             checkPositionIndex(i);
-            if (n + 1 > a.length) {
-                resize();
+            if (n + 1 > a.length) {     // a = [3,5,8,1,]  a.length = 4
+                resize();               //      0,1,2,3         n=4
             }
             for (int j = n; j > i; j--) {
                 a[j] = a[j - 1];
@@ -54,7 +54,17 @@ public class ArraysDinamicos1 {
         // TODO(alumno): guardar a[i], desplazar a la izquierda, decrementar n
         // y reducir capacidad cuando a.length >= 3*n. Retornar lo eliminado.
         Integer remove(int i) {
-            throw new UnsupportedOperationException("TODO: implementar el método remove");
+            checkElementIndex(i);
+            Integer old = a[i];
+            for (int j = i; j < n - 1; j++) {
+                a[j] = a[j + 1];
+            }
+            n--;
+            a[n] = null;
+            if (a.length >= 3 * n) {
+                resize();
+            }
+            return old;
         }
 
         // TODO(alumno): retornar el primer índice cuyo elemento equals(x),
