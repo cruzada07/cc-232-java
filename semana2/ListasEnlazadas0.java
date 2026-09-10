@@ -3,7 +3,7 @@
  * Adaptación didáctica de Open Data Structures, Pat Morin.
  * Invariante: n==0 implica head==null y tail==null.
  */
-public class Semana02_ListasEnlazadas0 {
+public class ListasEnlazadas0 {
     static class SLList {
         static class Node {
             int x;
@@ -69,7 +69,7 @@ public class Semana02_ListasEnlazadas0 {
                 if (out.length() > 1) out.append(", ");
                 out.append(u.x);
             }
-            return out.append("] tamaño=").append(n).toString();
+            return out.append("] tamaño = ").append(n).toString();
         }
     }
 
