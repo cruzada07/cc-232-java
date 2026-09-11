@@ -38,11 +38,10 @@ public class ArraysDinamicos0 {
         // TODO(alumno): insertar x al final. Si n+1 supera la capacidad,
         // llamar primero a resize(). Costo amortizado esperado: O(1).
         boolean add(Integer x) {
-            if(n+1 > a.length){
+            if(n == a.length){
                 resize();
             }
-            a[n] = x;
-            n++;
+            a[n++] = x;
             return true;
         }
 
