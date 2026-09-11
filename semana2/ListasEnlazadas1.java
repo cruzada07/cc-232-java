@@ -30,7 +30,19 @@ public class ListasEnlazadas1 {
         // TODO(alumno): localizar el nodo i. Recorrer desde el extremo más
         // cercano. Precondición: 0 <= i < n.
         private Node getNode(int i) {
-            throw new UnsupportedOperationException("TODO: implementar el método getNode");
+            Node p;
+            if(i<n/2){
+                p=dummy.next;
+                for(int j=0; j<i; j++){
+                    p = p.next;
+                }
+            }else{
+                p = dummy.prev;
+                for(int j = n-1; j>i; j--){
+                    p = p.prev;
+                }
+            }
+            return p;
         }
 
         int get(int i) {
@@ -41,8 +53,8 @@ public class ListasEnlazadas1 {
             Node u = new Node(x);
             u.prev = w.prev;
             u.next = w;
-            u.next.prev = u;
             u.prev.next = u;
+            u.next.prev = u;
             n++;
             return u;
         }
