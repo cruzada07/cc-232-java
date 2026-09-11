@@ -62,7 +62,7 @@ public class ListasEnlazadas1 {
 
         void add(int i, int x) {    // lo pone en la posicion i
             if (i < 0 || i > n) {
-                throw new IndexOutOfBoundsException("posición=" + i + ", tamaño=" + n);
+                throw new IndexOutOfBoundsException("posición = " + i + ", tamaño = " + n);
             }
                             //    V        F
             addBefore( i == n ? dummy : getNode(i), x);
@@ -70,7 +70,15 @@ public class ListasEnlazadas1 {
 
         // TODO(alumno): desconectar getNode(i), decrementar n y retornar x.
         int remove(int i) {
-            throw new UnsupportedOperationException("TODO: implementar el método remove");
+            if(i<0 || i>=n){
+                throw new IndexOutOfBoundsException("posicion = " + i + ", tamaño = "+ n);
+            }
+            Node p = getNode(i);
+            int x = p.x;
+            p.prev.next = p.next;
+            p.next.prev = p.prev;
+            n--;
+            return x;
         }
 
         @Override
