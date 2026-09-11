@@ -30,15 +30,16 @@ public class ListasEnlazadas1 {
         // TODO(alumno): localizar el nodo i. Recorrer desde el extremo más
         // cercano. Precondición: 0 <= i < n.
         private Node getNode(int i) {
+            
             Node p;
             if(i<n/2){
-                p=dummy.next;
-                for(int j=0; j<i; j++){
+                p = dummy.next;
+                for(int j=0; j<i;j++){
                     p = p.next;
                 }
             }else{
                 p = dummy.prev;
-                for(int j = n-1; j>i; j--){
+                for(int j=n-1; j>i; j--){
                     p = p.prev;
                 }
             }
