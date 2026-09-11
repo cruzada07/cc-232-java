@@ -60,11 +60,12 @@ public class ListasEnlazadas1 {
             return u;
         }
 
-        void add(int i, int x) {
+        void add(int i, int x) {    // lo pone en la posicion i
             if (i < 0 || i > n) {
                 throw new IndexOutOfBoundsException("posición=" + i + ", tamaño=" + n);
             }
-            addBefore(i == n ? dummy : getNode(i), x);
+                            //    V        F
+            addBefore( i == n ? dummy : getNode(i), x);
         }
 
         // TODO(alumno): desconectar getNode(i), decrementar n y retornar x.
