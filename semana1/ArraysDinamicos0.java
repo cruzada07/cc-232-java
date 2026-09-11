@@ -26,12 +26,13 @@ public class ArraysDinamicos0 {
         // TODO(alumno): crear un arreglo de capacidad max(1, 2*n), copiar
         // a[0..n-1] y reemplazar la referencia a.
         private void resize() {
-            int masCapacidad = 2*n;
-            Integer[] b = new Integer[Math.max(1, masCapacidad)];
-            for(int i=0; i<n; i++){
-                b[i] = a[i];
+            int newsize = Math.max(1, n*2);
+            Integer[] b = new Integer[newsize];
+            for(int j = 0; j<n; j++){
+                b[j] = a[j];
             }
-            a=b;
+
+            a = b;
         }
 
         // TODO(alumno): insertar x al final. Si n+1 supera la capacidad,
