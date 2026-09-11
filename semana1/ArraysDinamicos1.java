@@ -36,7 +36,7 @@ public class ArraysDinamicos1 {
 
         void add(int i, Integer x) {
             checkPositionIndex(i);
-            if (n + 1 > a.length) {     // a = [3,5,8,1,]  a.length = 4
+            if (n +1 > a.length) {      // a = [3,5,8,1, ]  a.length = 4
                 resize();               //      0,1,2,3         n=4
             }
             for (int j = n; j > i; j--) {
