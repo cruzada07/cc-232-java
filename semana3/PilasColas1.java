@@ -31,7 +31,8 @@ public class PilasColas1 {
         // TODO(alumno): retirar a[j], avanzar j modularmente, reducir n y
         // llamar resize cuando a.length >= 3*n. Costo amortizado O(1).
         Integer remove() {
-            throw new UnsupportedOperationException("TODO: implementar el método remove");
+            
+            
         }
 
         String logicalView() {
