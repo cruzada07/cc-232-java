@@ -4,35 +4,50 @@
  */
 public class PilasColas0 {
     static class LinkedStack {
-        static class Node {
+        static class Node{
             char x;
             Node next;
-            Node(char x, Node next) { this.x = x; this.next = next; }
+            Node(char x, Node next){
+                this.x=x;
+                this.next = next;
+            }
         }
 
         private Node head;
         private int n;
 
-        int size() { return n; }
-        boolean isEmpty() { return n == 0; }
+        int size() {
+            return n; 
+        }
+        boolean isEmpty() {     // si n=0 --> true
+            return n == 0;      // si n!= 0 --> false
+        }
 
         // TODO(alumno): insertar en la cabeza. Costo O(1).
         void push(char x) {
-            throw new UnsupportedOperationException("TODO: implementar el método push");
+            Node u;
+            u = new Node(x, head);
+
+            head = u;
+            n++;                    // TERMINADO
         }
 
         // TODO(alumno): retirar y retornar la cabeza. Lanzar una excepción
         // si la pila está vacía. Costo O(1).
         char pop() {
-            throw new UnsupportedOperationException("TODO: implementar el método pop");
+            
         }
     }
 
     static String reverse(String text) {
         LinkedStack stack = new LinkedStack();
-        for (char c : text.toCharArray()) stack.push(c);
+        for (char c : text.toCharArray()){
+            stack.push(c);
+        }
         StringBuilder out = new StringBuilder();
-        while (!stack.isEmpty()) out.append(stack.pop());
+        while (!stack.isEmpty()){
+            out.append(stack.pop());
+        }
         return out.toString();
     }
 
