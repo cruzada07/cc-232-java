@@ -1,9 +1,8 @@
-
 /*
  * CC-232 - Semana 4, lunes: búsqueda e inserción en un BST.
  * Adaptación didáctica de BinarySearchTree de Pat Morin.
  */
-public class BST0 {
+public class Semana04_BST0 {
     static class BinarySearchTree {
         static class Node {
             int x;
