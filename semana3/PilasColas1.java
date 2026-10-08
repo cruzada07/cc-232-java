@@ -8,22 +8,33 @@ import java.util.NoSuchElementException;
 
 public class PilasColas1 {
     static class ArrayQueue {
-        private Integer[] a = new Integer[4];
+        private Integer[] a = new Integer[4];   // Arreglo
         private int j;
         private int n;
 
-        int size() { return n; }
-        Integer peek() { return n == 0 ? null : a[j]; }
+        int size() { 
+            return n; 
+        }
+        Integer peek() { 
+            return n == 0 ? null : a[j]; 
+        }
 
         // TODO(alumno): copiar los n elementos en orden lógico a un arreglo
         // de capacidad max(1, 2*n), asignarlo a a y fijar j=0.
-        private void resize() {
-            throw new UnsupportedOperationException("TODO: implementar el método resize");
+        private void resize(){
+            Integer[] b = new Integer[ Math.max(1, 2*n)];
+            for(int k=0; k<n; k++){
+                b[k] = a[ (k+j) % a.length];    // Orden logico
+            }
+            a=b;
+            j=0;
         }
 
         boolean add(Integer x) {
-            if (n + 1 > a.length) resize();
-            a[(j + n) % a.length] = x;
+            if(n+1>a.length){
+                resize();
+            }
+            a[ (j+n) % a.length ] = x;
             n++;
             return true;
         }
@@ -31,13 +42,27 @@ public class PilasColas1 {
         // TODO(alumno): retirar a[j], avanzar j modularmente, reducir n y
         // llamar resize cuando a.length >= 3*n. Costo amortizado O(1).
         Integer remove() {
-            throw new UnsupportedOperationException("TODO: implementar el método remove");
+            if(n==0){
+                throw new java.util.NoSuchElementException("La cola esta vacia");
+            }
+            Integer x = a[j];   // guardamos valor
+            a[j] = null;
+            
+            j = (j+1)%a.length;
+            n--;
+            if( 3*n <= a.length){
+                resize();
+            }
+
+            return x;
         }
 
         String logicalView() {
             Integer[] view = new Integer[n];
-            for (int k = 0; k < n; k++) view[k] = a[(j + k) % a.length];
-            return Arrays.toString(view) + " j=" + j + " capacidad=" + a.length;
+            for(int k = 0; k<n; k++){
+                view[k] = a[ (k+j) % a.length];
+            }
+            return Arrays.toString(view) + "j = " + j + ", capacidad = " + a.length;
         }
     }
 
