@@ -18,7 +18,7 @@ public class PilasColas1 {
         // TODO(alumno): copiar los n elementos en orden lógico a un arreglo
         // de capacidad max(1, 2*n), asignarlo a a y fijar j=0.
         private void resize() {
-            
+            throw new UnsupportedOperationException("TODO: implementar el método resize");
         }
 
         boolean add(Integer x) {
@@ -31,8 +31,7 @@ public class PilasColas1 {
         // TODO(alumno): retirar a[j], avanzar j modularmente, reducir n y
         // llamar resize cuando a.length >= 3*n. Costo amortizado O(1).
         Integer remove() {
-            
-            
+            throw new UnsupportedOperationException("TODO: implementar el método remove");
         }
 
         String logicalView() {
