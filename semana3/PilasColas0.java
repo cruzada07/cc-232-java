@@ -35,7 +35,15 @@ public class PilasColas0 {
         // TODO(alumno): retirar y retornar la cabeza. Lanzar una excepción
         // si la pila está vacía. Costo O(1).
         char pop() {
-            
+            if(isEmpty()){
+                throw new java.util.NoSuchElementException("La pila está vacia");
+            }else{
+                char x = head.x;
+                head = head.next;
+                n--;
+
+                return x;
+            }
         }
     }
 
