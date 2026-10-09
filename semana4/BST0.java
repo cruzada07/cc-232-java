@@ -28,6 +28,7 @@ public class BST0 {
             Node w = root;
             Node prev = null;   //  Declaramos inicialmente nulo
             while(w != null){
+                prev = w;
                 if(x < w.x){
                     w = w.left;
                 }else if(x > w.x){
@@ -47,8 +48,24 @@ public class BST0 {
 
         // TODO(alumno): usar findLast y enlazar un nuevo nodo como hijo de p.
         // Rechazar duplicados y mantener parent y n.
-        boolean add(int x) {
-            throw new UnsupportedOperationException("TODO: implementar el método add");
+        boolean add(int x){
+            Node p = findLast(x);
+            Node u = new Node(x);
+
+            if(p == null){  //  Arbol vacio
+                root = u;
+            }else if(x == p.x){     //  Ya existe !!
+                return false;  
+            }else if(x < p.x){
+                p.left = u;
+                u.parent = p;
+            }else{          //  Conectar hijo derecho(mayor)
+                p.right = u;
+                u.parent = p;
+            }
+
+            n++;
+            return true;
         }
 
         void inorder() {
