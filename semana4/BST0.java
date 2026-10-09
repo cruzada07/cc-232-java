@@ -2,25 +2,42 @@
  * CC-232 - Semana 4, lunes: búsqueda e inserción en un BST.
  * Adaptación didáctica de BinarySearchTree de Pat Morin.
  */
-public class Semana04_BST0 {
+public class BST0 {
     static class BinarySearchTree {
         static class Node {
             int x;
             Node left;
             Node right;
             Node parent;
-            Node(int x) { this.x = x; }
+
+            Node(int x) { 
+                this.x = x; 
+            }
         }
 
         private Node root;
         private int n;
 
-        int size() { return n; }
+        int size() { 
+            return n; 
+        }
 
         // TODO(alumno): seguir el camino de búsqueda y retornar el último nodo
         // visitado, null cuando el árbol está vacío.
-        private Node findLast(int x) {
-            throw new UnsupportedOperationException("TODO: implementar el método findLast");
+        private Node findLast(int x){
+            Node w = root;
+            Node prev = null;   //  Declaramos inicialmente nulo
+            while(w != null){
+                if(x < w.x){
+                    w = w.left;
+                }else if(x > w.x){
+                    w = w.right;
+                }else{
+                    return w;   //  Elemento encontrado !!
+                }
+            }
+
+            return prev;        //   Ultimo nodo
         }
 
         boolean contains(int x) {
@@ -39,12 +56,15 @@ public class Semana04_BST0 {
             System.out.println();
         }
 
-        private void inorder(Node u) {
-            if (u == null) return;
+        private void inorder(Node u){
+            if(u==null){
+                return;
+            }
             inorder(u.left);
             System.out.print(u.x + " ");
             inorder(u.right);
         }
+        
     }
 
     public static void main(String[] args) {
