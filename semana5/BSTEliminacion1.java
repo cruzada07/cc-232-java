@@ -1,4 +1,4 @@
-package semana5;
+package semana5;    //  in java
 
 /*
  * CC-232 - Semana 5: eliminación y casos borde: eliminación en BinarySearchTree.
@@ -50,22 +50,19 @@ public class BSTEliminacion1 {
         // Reconectar el hijo con u.parent y actualizar root cuando corresponda.
         private void splice(Node u) {
             Node s = (u.left != null) ? u.left : u.right;
-            Node p = u.parent;
+            // si es V, entonces remplaza con su hijo izquierdo(no nulo), si es falso se va con su hijo derecho, si existe lo reemplaza, y si es nulo simplemente s pasa a ser nulo
 
-            if (u == root) {
+            Node p = u.parent;
+            if(p == null){
                 root = s;
-                if (s != null){
-                    s.parent = null;
-                }
-            } else {
-                if (p.left == u){
-                    p.left = s;
-                }else{
-                    p.right = s;
-                } 
-                if (s != null){
-                    s.parent = p;
-                }
+            }else if(p.left == u){
+                p.left = s;
+            }else{
+                p.right = s;
+            }
+
+            if(s != null){
+                s.parent = p;
             }
         }
 
@@ -73,27 +70,27 @@ public class BSTEliminacion1 {
         // inorder y aplicar splice al sucesor. Decrementar n una sola vez.
         boolean remove(int x) {
             Node u = findLast(x);
-
-            if (u == null || u.x != x) {
+            if(u == null || u.x != x){
                 return false;
             }
 
-            if (u.left == null || u.right == null) {
+            if(u.left ==null || u.right == null){
                 splice(u);
-            } else {
+            }else{
                 Node w = u.right;
-                while (w.left != null) {
+                while(w.left != null){
                     w = w.left;
                 }
                 u.x = w.x;
                 splice(w);
             }
-
             n--;
             return true;
         }
 
-        int size() { return n; }
+        int size() { 
+            return n; 
+        }
 
         void inorder() {
             inorder(root);
