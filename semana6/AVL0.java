@@ -8,9 +8,11 @@ public class AVL0 {
     static class Node {
         int x;
         int height = 1;
-        Node left;
-        Node right;
-        Node(int x) { this.x = x; }
+        Node left;  // hijo izquierdo
+        Node right; // hijo derecho
+        Node(int x) { 
+            this.x = x; 
+        }
     }
 
     static int height(Node u) {
@@ -28,16 +30,35 @@ public class AVL0 {
     // TODO(alumno): realizar la rotación derecha alrededor de y, actualizar
     // primero la altura de y y luego la de x, y retornar la nueva raíz.
     static Node rotateRight(Node y) {
-        throw new UnsupportedOperationException("TODO: implementar el método rotateRight");
+        Node x = y.left;
+        Node T2 = x.right;
+
+        x.right = y;
+        y.left = T2;
+
+        updateHeight(y);
+        updateHeight(x);
+
+        return x;
     }
 
-    // TODO(alumno): operación simétrica a rotateRight.
     static Node rotateLeft(Node x) {
-        throw new UnsupportedOperationException("TODO: implementar el método rotateLeft");
+        Node y = x.right;
+        Node T1 = y.left;
+
+        y.left = x;
+        x.right = T1;
+
+        updateHeight(x);
+        updateHeight(y);
+
+        return y;
     }
 
     static void preorder(Node u) {
-        if (u == null) return;
+        if (u == null){
+            return;
+        }
         System.out.print(u.x + "(h=" + u.height + ") ");
         preorder(u.left);
         preorder(u.right);
