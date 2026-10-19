@@ -4,7 +4,7 @@ package semana5;    //  in java
  * CC-232 - Semana 5: eliminación y casos borde: eliminación en BinarySearchTree.
  * Adaptación didáctica de BinarySearchTree de Pat Morin.
  */
-public class BSTEliminacion1 {
+public class BST1 {
     static class BinarySearchTree {
         static class Node {
             int x;
