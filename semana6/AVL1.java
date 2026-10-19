@@ -59,7 +59,22 @@ public class AVL1 {
         // TODO(alumno): usar balanceFactor y reconocer LL, RR, LR y RL.
         // Retornar la nueva raíz local después de la rotación necesaria.
         private Node rebalance(Node u) {
-            
+            int bf = balanceFactor(u);
+            if(bf > 1){
+                if(balanceFactor(u.left) <0){
+                    u.left = rotateLeft(u.left);
+                }
+                return rotateRight(u);
+            }
+
+            if(bf < -1){
+                if(balanceFactor(u.right)>0){
+                    u.right = rotateRight(u.right);
+                }
+                return rotateLeft(u);
+            }
+
+            return u;
         }
 
         void preorder() {
