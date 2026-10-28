@@ -7,13 +7,15 @@ package semana7;
  */
 import java.util.Arrays;
 
-public class Semana07_Heap0 {
+public class Heap0 {
     static class BinaryHeap {
         private Integer[] a = new Integer[1];
         private int n;
 
+/*      Funcionan solo como formulas:
         private int left(int i) { return 2 * i + 1; }
         private int right(int i) { return 2 * i + 2; }
+*/
         private int parent(int i) { return (i - 1) / 2; }   //Nos quedamos con la parte entera
 
         private void resize() {
@@ -29,7 +31,11 @@ public class Semana07_Heap0 {
         // TODO(alumno): mientras i>0 y a[i] sea menor que su padre,
         // intercambiar ambos y continuar desde el padre.
         private void bubbleUp(int i) {
-            throw new UnsupportedOperationException("TODO: implementar el método bubbleUp");
+            while(i>0 && a[i] < a[parent(i)]){
+                int p = parent(i);
+                swap(i, p);
+                i = p;
+            }
         }
 
         boolean add(int x) {
