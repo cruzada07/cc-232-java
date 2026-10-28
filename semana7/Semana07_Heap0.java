@@ -14,13 +14,13 @@ public class Semana07_Heap0 {
 
         private int left(int i) { return 2 * i + 1; }
         private int right(int i) { return 2 * i + 2; }
-        private int parent(int i) { return (i - 1) / 2; }
+        private int parent(int i) { return (i - 1) / 2; }   //Nos quedamos con la parte entera
 
         private void resize() {
-            a = Arrays.copyOf(a, Math.max(1, 2 * n));
+            a = Arrays.copyOf(a, Math.max(1, 2 * n));   //Crea un nuevo arreglo con el doble de espacio
         }
 
-        private void swap(int i, int j) {
+        private void swap(int i, int j) {   //Intercambio de valores, util en bubbleUp
             int x = a[i];
             a[i] = a[j];
             a[j] = x;
@@ -33,9 +33,12 @@ public class Semana07_Heap0 {
         }
 
         boolean add(int x) {
-            if (n + 1 > a.length) resize();
+            if (n + 1 > a.length){
+                resize();
+            }
+
             a[n++] = x;
-            bubbleUp(n - 1);
+            bubbleUp(n - 1);    //Esque la linea anterior aumento a n en 1, asi que -1 para irnos al ultimo elemento
             return true;
         }
 
