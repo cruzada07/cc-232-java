@@ -72,7 +72,10 @@ public class Heap1 {
         // TODO(alumno): ejecutar trickleDown desde n/2-1 hasta 0. El costo
         // total debe ser O(n), no O(n log n).
         private void heapify() {
-            throw new UnsupportedOperationException("TODO: implementar el método heapify");
+            for (int i = (n/2)-1; i>=0 ;i--){   // ultimo padre: (n/2) - 1
+                trickleDown(i);
+            }
+
         }
 
         boolean add(int x) {
