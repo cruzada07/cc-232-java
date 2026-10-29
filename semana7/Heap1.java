@@ -48,7 +48,25 @@ public class Heap1 {
         // TODO(alumno): seleccionar el menor entre i y sus hijos válidos,
         // intercambiar y repetir hasta restaurar el invariante.
         private void trickleDown(int i) {
-            throw new UnsupportedOperationException("TODO: implementar el método trickleDown");
+            while(true){
+                int smallest = i;
+
+                int l = left(i);
+                int r = right(i);
+
+                if(l < n && a[l] < a[smallest]){
+                    smallest = l;
+                }
+                if(r < n && a[r] < a[smallest]){
+                    smallest = r;
+                }
+
+                if(smallest == i) return;
+
+                swap(i, smallest);
+
+                i = smallest;
+            }
         }
 
         // TODO(alumno): ejecutar trickleDown desde n/2-1 hasta 0. El costo
