@@ -34,7 +34,10 @@ public class Hashing1 {
         }
 
         boolean add(T value) {
-            if (contains(value)) return false;
+            if (contains(value)){
+                return false;
+            }
+
             buckets[hash(value)].add(value);
             size++;
             return true;
@@ -43,8 +46,22 @@ public class Hashing1 {
         // TODO(alumno): buscar value en su bucket mediante Iterator, eliminarlo,
         // decrementar size y retornar true. Retornar false si no está presente.
         boolean remove(T value) {
-            throw new UnsupportedOperationException("TODO: implementar el método remove");
+            
+            int j = hash(value);
+            Iterator<T> it = buckets[j].iterator();
+            while(it.hasNext()){    //Mientras queden elementos
+                T current = it.next();
+                if (current.equals(value)) {    //  Compara el CONTENIDO
+                    it.remove();
+                    size--;
+                    return true;
+                }   
+            }
+            return false;
+
         }
+
+    
 
         void printBuckets() {
             for (int i = 0; i < buckets.length; i++) {
@@ -52,6 +69,7 @@ public class Hashing1 {
             }
         }
     }
+
 
     public static void main(String[] args) {
         ChainedHashSet<String> set = new ChainedHashSet<>(5);
