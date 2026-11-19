@@ -14,7 +14,7 @@ import java.util.List;
 
 public class Hashing1 {
     static class ChainedHashSet<T> {
-        private final List<T>[] buckets;
+        private final List<T>[] buckets;    // ARREGLO DE LISTAS
         private int size;
 
         @SuppressWarnings("unchecked")
@@ -43,8 +43,20 @@ public class Hashing1 {
 
         // TODO(alumno): buscar value en su bucket mediante Iterator, eliminarlo,
         // decrementar size y retornar true. Retornar false si no está presente.
-        boolean remove(T value) {
-            throw new UnsupportedOperationException("TODO: implementar el método remove");
+        boolean remove(T value){
+            int j = hash(value);
+            Iterator<T> it = buckets[j].iterator();
+
+            while (it.hasNext()) {
+                T current = it.next();
+                if(current.equals(value)){
+                    it.remove();
+                    size--;
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         void printBuckets() {
